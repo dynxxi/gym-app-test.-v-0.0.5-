@@ -2,6 +2,8 @@ ejercicios = [{"ejercicio": "sentadilla", "descripcion": "ejercicio de piernas"}
                {"ejercicio": "press de banca", "descripcion": "ejercicio para pechito"},
             {"ejercicio": "press militar", "descripcion": "ejercicio para hombrito"}]
 
+ejercicios_set = {'sentadilla', 'press de banca', 'press militar'}
+
 def menu_principal():
     while True:
         elegir = input("\n Usuario, ¿A donde desea ir?.-"
@@ -67,29 +69,27 @@ def agregar_ejercicios_0_2():
         ejercicio1 = input('\n ¿Cual es el nombre que desea ponerle a su ejercicio?: ').lower()
         if ejercicio1 == '':
             print('\n Respuesta invalida')
-        duplicado = False
-        for ejercicio_a in (ejercicios):
-            if ejercicio_a.get("ejercicio") == ejercicio1:
+        elif ejercicio1 in ejercicios_set:
                 print(f'\nEl ejercicio que usted quiso crear ({ejercicio1}) ya se encuentra en la lista. \nEliga otro nombre para su ejercicio e intentelo de nuevo ')
-                duplicado = True
-                break
-        if not duplicado:
+                return
+        else:
             descripcion = input('\n ¿Cual es la descripcion que desea agregarle a este objeto?: ').strip().lower()
             ejercicios.append({
             "ejercicio": ejercicio1,
-             "descripcion": descripcion
-            })
-            print(f'\n ¡Listo, tu ejercicio {ejercicio1} se agrego correctamente en la ultima seccion de la lista!, ¡miralo!')
-            for numero, ejercicio1 in enumerate (ejercicios, start=1):
+            "descripcion": descripcion
+        })
+        ejercicios_set.add(ejercicio1)
+        print(f'\n ¡Listo, tu ejercicio {ejercicio1} se agrego correctamente en la ultima seccion de la lista!, ¡miralo!')
+        for numero, ejercicio1 in enumerate (ejercicios, start=1):
                 print (f'\n {numero}. {ejercicio1["ejercicio"]} / Descripcion: {ejercicio1["descripcion"]}')
-            pregunta = input('\n ¿Desea volver al menu (Salir) o desea agregar otro ejercicio (Agregar)?: ').lower().strip()
-            if pregunta == 'salir':
+        pregunta = input('\n ¿Desea volver al menu (Salir) o desea agregar otro ejercicio (Agregar)?: ').lower().strip()
+        if pregunta == 'salir':
                 print (f'\n Volviendo al menu principal...')
                 return       
-            elif pregunta == 'agregar':
+        elif pregunta == 'agregar':
                 print (f'\n Redi')
                 continue
-            else:
+        else:
                 print ('\n Intentelo nuevamente')
                 return
 
@@ -100,18 +100,22 @@ def borrar_ejercicio():
         if pregunta1 == '':
             print(f' \nTu respuesta {pregunta1} es invalida... \nReintentando')
         else:
-            for ejercicio1 in (ejercicios):
-                if ejercicio1.get("ejercicio") == pregunta1:
-                    ejercicios.remove(ejercicio1)
-                    print(f'\n¡El ejercicio {pregunta1} ha sido eliminado con exito!')
-                    encontrado = True
-                    pregunta3 = input(f'\n ¿Desea eliminar otro ejercicio o desea salir al menu principal? \nEscribe "salir" para salir o "buscar" para buscar otro: ').lower().strip()
-                    if pregunta3 == 'salir':
+            
+            if pregunta1 in ejercicios_set:
+                ejercicios_set.discard(pregunta1)
+                for ejerci in ejercicios:
+                        if ejerci.get('ejercicio') == pregunta1:
+                            ejercicios.remove(ejerci)
+                            break
+                print(f'\n¡El ejercicio {pregunta1} ha sido eliminado con exito!')
+                encontrado = True
+                pregunta3 = input(f'\n ¿Desea eliminar otro ejercicio o desea salir al menu principal? \nEscribe "salir" para salir o "buscar" para buscar otro: ').lower().strip()
+                if pregunta3 == 'salir':
                            return
-                    elif pregunta3 == 'buscar':
+                elif pregunta3 == 'buscar':
                            print('Reintentando...')
                            continue
-                    else:
+                else:
                            print('Introduzca una respuesta valida...')
                            
             if not encontrado:
