@@ -32,7 +32,7 @@ def check_ejercicios():
         for numero, ejercicio1 in enumerate(ejercicios, start=1):
             if ejercicio1.get("ejercicio"):
                     print (f' \n {numero} . {ejercicio1["ejercicio"]} - Descripcion: {ejercicio1["descripcion"]}')
-        input('\n Presione cualquier tecla para volver al menu principal: ').strip().lower()
+        input('\n Presione la tecla ENTER para volver al menu principal: ').strip().lower()
         return
     
             
@@ -67,7 +67,13 @@ def agregar_ejercicios_0_2():
         ejercicio1 = input('\n ¿Cual es el nombre que desea ponerle a su ejercicio?: ').lower()
         if ejercicio1 == '':
             print('\n Respuesta invalida')
-        else:
+        duplicado = False
+        for ejercicio_a in (ejercicios):
+            if ejercicio_a.get("ejercicio") == ejercicio1:
+                print(f'\nEl ejercicio que usted quiso crear ({ejercicio1}) ya se encuentra en la lista. \nEliga otro nombre para su ejercicio e intentelo de nuevo ')
+                duplicado = True
+                break
+        if not duplicado:
             descripcion = input('\n ¿Cual es la descripcion que desea agregarle a este objeto?: ').strip().lower()
             ejercicios.append({
             "ejercicio": ejercicio1,
@@ -76,13 +82,13 @@ def agregar_ejercicios_0_2():
             print(f'\n ¡Listo, tu ejercicio {ejercicio1} se agrego correctamente en la ultima seccion de la lista!, ¡miralo!')
             for numero, ejercicio1 in enumerate (ejercicios, start=1):
                 print (f'\n {numero}. {ejercicio1["ejercicio"]} / Descripcion: {ejercicio1["descripcion"]}')
-            pregunta = input('\n ¿Desea volver al menu (Salir) o desea termina la sesión (End)?: ').lower().strip()
+            pregunta = input('\n ¿Desea volver al menu (Salir) o desea agregar otro ejercicio (Agregar)?: ').lower().strip()
             if pregunta == 'salir':
                 print (f'\n Volviendo al menu principal...')
                 return       
-            elif pregunta == 'end':
-                print (f'\n Hasta la proxima...')
-                return 
+            elif pregunta == 'agregar':
+                print (f'\n Redi')
+                continue
             else:
                 print ('\n Intentelo nuevamente')
                 return
@@ -118,8 +124,8 @@ def borrar_ejercicio():
                     print('\n Ingrese una respuesta correcta')
 menu_principal()
 
-# ESP - este codigo esta actualmente en su version 0.0.7, se resolvieron errores ocultos en el codigo y se agrego una nueva funcionalidad... BORRAR EJERCICIO, ahora puedes borrar un ejercicio que se encuentre dentro de la lista.
-# la version 0.0.8 se van optimizar las funciones si es que se pueden, si no, se dejara asi y simplemente para la 0.1.0 agregara cosas nuevas, pero eso pasara en el futuro...
+# ESP - este codigo esta actualmente en su version 0.0.8, mejore el codigo en ciertas areas y agrege una funcionalidad adicional que evita agregar ejercicios duplicados (o con el mismo nombre) cuando intentas agregar un ejercicio.
+# la version 0.0.9 se van optimizar las funciones si es que se pueden, si no, se dejara asi y simplemente para la 0.1.0 agregara cosas nuevas, pero eso pasara en el futuro...
 
-# ENG - this code is in 0.0.7 version actually, i resolved hidden errors in the code and... y added a new fuction... DELETE EXERCISES, now you can delete a exercise who was in the list.
-# the 0.0.8 will optmize the fuctions if they can, if not, i let them as they are and i'll just add more things in the 0.1.0 version, but that will happen in the future....
+# ENG - this code is in 0.0.8 version actually, i improve the code in some areas of the code and... i added a aditional fuction not let make exercises who has the same name when you try to add a new exercise.
+# the 0.0.9 will optmize the fuctions if they can, if not, i let them as they are and i'll just add more things in the 0.1.0 version, but that will happen in the future....
