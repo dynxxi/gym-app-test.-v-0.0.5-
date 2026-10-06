@@ -148,16 +148,6 @@ lista.bind("<<ListboxSelect>>", seleccionado)
 app.mainloop()
 
 
+# ESP - HA LLEGADO... LA VERSION 0.1.0!!!!!... perdon si esta toda fea y rara, es que estoy programando hace... 1 semana y me entretetiene todo esto, igualmente seguire dandole mantenimiento y actualizaciones ;)
 
-
-#lista.bind("<<ListboxSelect>>", seleccionado)
-#tk.Button(app,text='Elegir',font=("Courier", 10),bg= "#FF0000",fg= "#FDFDFD",command= menu_principal)
-
-
-
-
-# ESP - este codigo esta actualmente en su version 0.0.8.5, arregle algunos bugs con la implementacion de las sets en forma de listas y optimice el codigo con sets, para eliminar y crear ejercicios mas rapido.
-# la version 0.0.9 se van optimizar las funciones si es que se pueden, si no, se dejara asi y simplemente para la 0.1.0 agregara cosas nuevas, pero eso pasara en el futuro...
-
-# ENG - this code is in 0.0.8 version actually, i fixed some bugs with the new sets list add and optimized the code with sets, to make and delete the exercises faster.
-# the 0.0.9 will optmize the fuctions if they can, if not, i let them as they are and i'll just add more things in the 0.1.0 version, but that will happen in the future....
+# ENG - NOW IS REAL.... THE 0.1.0 VERSION IS HERE!!!!... im sorry if the GUI is very awful and weird, i start programing 1 week ago and im really enjoying this, anyways im going to giving support, fixes and updates to the code and gui ;)
